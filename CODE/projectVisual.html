@@ -1,0 +1,437 @@
+<html lang="en">
+<head>
+    <!-- import required libraries here -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Flight Delay Prediction</title>
+    <link rel="stylesheet" href = "styles.css">
+
+    
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <h1 class = 'title' style="text-align: center;">Domestic U.S. Flight Delay Prediction</h1>
+    </header>
+
+    <main>
+        <!-- Team Members Names -->
+        <section id="authors">
+            Team 36 - Yigithan Ackercan, Shaambhav Dave, Zack Dearman, Ronith Gonsalves, Anish Jaisinghani & Krishna Maran
+        </section>
+
+        <hr>
+        <!-- Dropdown Options -->
+        <section id="dropdowns">
+            <!-- Airlines Dropdown -->
+            <div>
+                <label class = "dropdown-label">Select Airline:</label>
+                <select id = "airlineDropdown">
+                <option value = "" disabled selected>-</option>
+                <option value = "AS">Alaska Airlines</option>
+                <option value = "G4">Allegiant Air</option>
+                <option value = "AA">American Airlines</option>
+                <option value = "DL">Delta Airlines</option>
+                <option value = "9E">Endeavor Air</option>
+                <option value = "MQ">Envoy Air</option>
+                <option value = "EV">ExpressJet Airlines</option>
+                <option value = "F9">Frontier Airlines</option>
+                <option value = "HA">Hawaiian Airlines</option>
+                <option value = "QX">Horizon Air</option>
+                <option value = "B6">JetBlue</option>
+                <option value = "YV">Mesa Airlines</option>
+                <option value = "OH">PSA Airlines</option>
+                <option value = "YX">Republic Airlines</option>
+                <option value = "OO">SkyWest Airlines</option>
+                <option value = "WN">Southwest Airlines</option>
+                <option value = "NK">Spirit Airlines</option>
+                <option value = "UA">United Airlines</option>
+                </select>
+            </div>
+            
+            <!-- Airport Dropdown -->
+            <div>
+                <label class = "dropdown-label">Select Airport:</label>
+                <select id = "airportDropdown" style = "margin-top: 10px;">
+                <option value = "" disabled selected>-</option>
+                <option value = "ABQ">Albuquerque</option>
+                <option value = "ANC">Anchorage</option>
+                <option value = "ATL">Atlanta</option>
+                <option value = "AUS">Austin</option>
+                <option value = "BWI">Baltimore</option>
+                <option value = "BOI">Boise</option>
+                <option value = "BOS">Boston</option>
+                <option value = "BUR">Burbank</option>
+                <option value = "CHS">Charleston</option>
+                <option value = "CLT">Charlotte</option>
+                <option value = "MDW">Chicago - MDW</option>
+                <option value = "ORD">Chicago - ORD</option>
+                <option value = "CVG">Cincinnati</option>
+                <option value = "CLE">Cleveland</option>
+                <option value = "CMH">Columbus</option>
+                <option value = "DAL">Dallas</option>
+                <option value = "DFW">Dallas-Fort Worth</option>
+                <option value = "DEN">Denver</option>
+                <option value = "DTW">Detroit</option>
+                <option value = "FLL">Fort Lauderdale</option>
+                <option value = "RSW">Fort Meyers</option>
+                <option value = "BDL">Hartford</option>
+                <option value = "HNL">Honolulu</option>
+                <option value = "HOU">Houston - HOU</option>
+                <option value = "IAH">Houston - IAH</option>
+                <option value = "IND">Indianapolis</option>
+                <option value = "JAX">Jacksonville</option>
+                <option value = "OGG">Kahului</option>
+                <option value = "MCI">Kansas City</option>
+                <option value = "LAS">Las Vegas</option>
+                <option value = "LAX">Los Angeles</option>
+                <option value = "MEM">Memphis</option>
+                <option value = "MIA">Miami</option>
+                <option value = "MKE">Milwaukee</option>
+                <option value = "MSP">Minneapolis-St. Paul</option>
+                <option value = "BNA">Nashville</option>
+                <option value = "MSY">New Orleans</option>
+                <option value = "JFK">New York City - JFK</option>
+                <option value = "LGA">New York City - LGA</option>
+                <option value = "EWR">Newark</option>
+                <option value = "OAK">Oakland</option>
+                <option value = "OMA">Omaha</option>
+                <option value = "ONT">Ontario</option>
+                <option value = "MCO">Orlando</option>
+                <option value = "PHL">Philadelphia</option>
+                <option value = "PHX">Phoenix</option>
+                <option value = "PIT">Pittsburgh</option>
+                <option value = "PDX">Portland</option>
+                <option value = "RDU">Raleigh</option>
+                <option value = "RNO">Reno</option>
+                <option value = "SMF">Sacremento</option>
+                <option value = "SLC">Salt Lake City</option>
+                <option value = "SAT">San Antonio</option>
+                <option value = "SAN">San Diego</option>
+                <option value = "SFO">San Francisco</option>
+                <option value = "SJC">San Jose</option>
+                <option value = "SNA">Santa Ana</option>
+                <option value = "SEA">Seattle-Tacoma</option>
+                <option value = "STL">St. Louis</option>
+                <option value = "DCA">Washington D.C. - DCA</option>
+                <option value = "IAD">Washington D.C. - IAD</option>
+                <option value = "PBI">West Palm Beach</option>
+                </select>
+            </div>
+            
+            <!-- Month Dropdown -->
+            <div>
+                <label class = "dropdown-label">Select Month:</label>
+                <select id = "monthDropdown" style = "margin-top: 10px;">
+                <option value = "" disabled selected>-</option>
+                <option value = "1">January</option>
+                <option value = "2">February</option>
+                <option value = "3">March</option>
+                <option value = "4">April</option>
+                <option value = "5">May</option>
+                <option value = "6">June</option>
+                <option value = "7">July</option>
+                <option value = "8">August</option>
+                <option value = "9">September</option>
+                <option value = "10">October</option>
+                <option value = "11">November</option>
+                <option value = "12">December</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Submit button for dropdowns -->
+        <button id="submitButton">Submit</button>
+
+        <!-- Delay Prediction Box -->
+        <section id="predictionBox">
+            <p id="predictionText">Predicted Delay: <span id="predictedDelay">N/A</span></p>
+            <p id="cancellationText">Cancellation Probability: <span id="predictedCancel">N/A</span></p>
+        </section>        
+    </main>
+    
+    <!-- Data source caption -->
+    <footer>
+        <div id="data-source">
+            <p>All data is sourced from the United States Bureau of Transportation Statistics.</p>
+            <p>All calculations are estimates and may not be 100% accurate.</p>
+        </div>
+    </footer>
+
+    <!-- ----------- -->
+    <!-- Start of D3 -->
+    <!-- ----------- -->
+    <script type="text/javascript" src="lib/d3.v5.min.js"></script>
+    <script type="text/javascript" src="lib/d3-legend.min.js"></script>
+    <script type="text/javascript" src="lib/d3-tip.min.js"></script>
+        
+    <script>
+        //--------------------------------------------------
+        //Reading Prediction Box Data and Displaying Results
+        //--------------------------------------------------
+
+        //Load CSV File
+        const flightData = d3.csv("flightdata_delay_and_cancellation.csv");
+
+        flightData.then(function(data) {
+            
+            //Define data
+            window.flightData = data;
+        
+            function submitForm() {
+                //Get submitted parameters from dropdowns
+                const selectedAirline = document.getElementById("airlineDropdown").value;
+                const selectedAirport = document.getElementById("airportDropdown").value;
+                const selectedMonth = document.getElementById("monthDropdown").value;
+
+                //Get filtered data
+                const data = window.flightData;
+                const filteredData = filterFlightData(data, selectedAirline, selectedAirport, selectedMonth);
+
+                // Display prediction results or "Not Available" message
+                displayResults(filteredData);
+            }
+
+            //Function to filter Airline, Airport, and Month from data
+            function filterFlightData(data, airline, airport, month) {
+                return data.filter(d => 
+                    d.AIRLINE_CODE === airline &&
+                    d.ORIGIN_CODE === airport &&
+                    d.Month_of_Travel === month
+                );
+            }
+
+            //Function to display results
+            function displayResults(filteredData) {
+                //Get user selections from dropdown
+                const predictionBox = document.getElementById("predictionBox");
+                const predictedDelayElem = document.getElementById("predictedDelay");
+                const predictedCancelElem = document.getElementById("predictedCancel");
+                
+                //Error handle data for chosen parameters are empty
+                if (filteredData.length === 0) {
+                    predictedDelayElem.textContent = "Not Available";
+                    predictedCancelElem.textContent = "Not Available";
+                    predictionBox.style.display = "block";
+                    return;
+                }
+                
+                //Calculate Average Delay Length
+                const averageDelay = parseFloat(filteredData[0].Predicted_Delay_Time);
+                const cancelProb = parseFloat(filteredData[0].Cancellation_Probability)*100;
+
+                const predictedDelay = `${averageDelay.toFixed(2)} minutes`;
+                const predictedCancel = (cancelProb === 0) ? `${cancelProb.toFixed(1)}%` : `${cancelProb.toFixed(4)}%`;
+
+                predictedDelayElem.textContent = predictedDelay;
+                predictedCancelElem.textContent = predictedCancel;
+                predictionBox.style.display = "block";
+            }
+
+        // Event listener for submit button
+        document.getElementById("submitButton").addEventListener("click", submitForm);
+        }).catch(function(error) {
+            console.log(error);
+        });
+
+
+        //--------------------------------------------------
+        //Creating US map and top 5 tooltip
+        //--------------------------------------------------
+
+        // Margins for SVG containing US Map
+        var w = 900
+        var h = 700;
+
+        // Define SVG
+        var svg = d3.select("body")
+            .append("svg")
+            .attr("id", "map")
+            .attr("width", w)
+            .attr("height", h);
+        
+        // Define top 5 tooltip
+        var tip = d3.select("body").append("div").attr("id", "tooltip").attr("class", "hidden");
+
+        //define US map projections
+        var projection = d3.geoAlbersUsa()
+        var path = d3.geoPath()
+            .projection(projection);
+
+        // Read in data as global variable
+        var map = d3.json("usa_map.json");
+        var cities = d3.csv("airports.csv");
+
+        Promise.all([
+            map, cities
+        ]).then(
+            //Calls ready() function after reading in data
+            function(values){
+                ready(values[0], values[1]);
+            }
+        );
+
+        // Define ready() function
+        function ready(map, cities) {
+            createMapAndLegend(map, cities) ;
+        }
+
+        function createMapAndLegend(map,cities){ 
+            // create map
+            svg.selectAll("*").remove();
+            svg.append("g")
+                .attr("id", "countries")
+                .selectAll("path")
+                .data(map.features)
+                .enter()
+                .append("path")
+                .attr("class","state")
+                .attr("d", path);
+            
+            //Create circles for top 63 airports
+            var click = 0;
+            svg.append("g")
+                .attr("id", "airports")
+                .selectAll("circle")
+                .data(cities)
+                .enter()
+                .append("circle")
+                .attr("class","city")
+                .attr("cx", function(d) {
+                    return projection([d.lon, d.lat])[0];
+                })
+                .attr("cy", function(d) {
+                    return projection([d.lon, d.lat])[1];
+                })
+                .attr("r", 4)
+                .attr("id", function(d){
+                    return d.code;
+                })
+                //Event listener to show tooltip
+                .on("mouseover", function(d) {
+                    if (click === 0) {
+                        d3.select("#tooltip")
+                        .style("top", (event.pageY+10)+"px")
+                        .style("left",(event.pageX+10)+"px")
+                        .append("text")
+                        .attr("id", "station")
+                        // .style("font-size", "20px")
+                        // .style("font-weight", "bold")
+                        .text(d.code)
+                        //Show the tooltip
+                        d3.select("#tooltip").classed("hidden", false);
+                        // Event listener to show tooltip
+                        ToolTip(d.code);
+                        click = 1;
+                    }
+                })
+                //Event listener to hide tooltip
+                .on("mouseout", function() {
+                    //Hide the tooltip
+                    d3.select("#tooltip").classed("hidden", true);
+                    d3.select("#tooltip").selectAll("*").remove();
+                    click = 0;
+
+                })
+        }
+
+        //--------------------------------------------------
+        //Function to define top 5 tool tip
+        //--------------------------------------------------
+        function ToolTip(airportCode) {
+        // Read the expected delay data CSV file
+        d3.csv("expected_delay_by_airline_and_airport.csv").then(function(data) {
+            // Filter data for the selected airport
+            const airportData = data.filter(d => d.ORIGIN_CODE === airportCode && d.EXPECTED_DELAY >0);
+            // Sort the filtered data by expected delay in descending order
+            airportData.sort((a, b) => a.EXPECTED_DELAY - b.EXPECTED_DELAY);
+            // Take the top 5 airlines with the highest expected delay
+            const topAirlines = airportData.slice(0, 5);
+
+            // Create SVG container for the bar graph
+            const svgWidth = 300;
+            const svgHeight = 200;
+            const margin = { top: 50, right: 50, bottom: 50, left: 50 };
+            const width = svgWidth - margin.left - margin.right;
+            const height = svgHeight - margin.top - margin.bottom;
+
+            const svg = d3.select("#tooltip")
+                .classed("hidden", false)
+                .append("svg")
+                .attr("width", svgWidth)
+                .attr("height", svgHeight)
+                .append("g")
+                .attr("transform", "translate(" + margin.left + "," + margin.top/2 + ")")
+                .style("z-index", "9999");
+
+            // Define x and y scales
+            const x = d3.scaleBand()
+                .range([0, width])
+                .padding(0.1)
+                .domain(topAirlines.map(d => d.AIRLINE_CODE));
+
+            const y = d3.scaleLinear()
+                .range([height, 0])
+                .domain([0, 1.1 * d3.max(topAirlines, d => parseFloat(d.EXPECTED_DELAY))]);
+
+            // Add bars to the bar graph
+            svg.selectAll(".bar")
+                .data(topAirlines)
+                .enter().append("rect")
+                .attr("class", "bar")
+                .attr("id", d =>d.AIRLINE_CODE)
+                .attr("x", d => x(d.AIRLINE_CODE))
+                .attr("width", x.bandwidth())
+                .attr("y", d => y(d.EXPECTED_DELAY))
+                .attr("height", d => height - y(d.EXPECTED_DELAY));
+
+            // Add x-axis
+            svg.append("g")
+                .attr("transform", "translate(0," + height + ")")
+                .call(d3.axisBottom(x));
+
+            // Add y-axis
+            svg.append("g")
+                .call(d3.axisLeft(y))
+                .append("text")
+                .attr("fill", "#000")
+                .attr("transform", "rotate(-90)")
+                .attr("y", 6)
+                .attr("dy", "0.71em")
+                .attr("text-anchor", "end");
+
+            // Add labels
+            svg.append("text")
+                .attr("x", width / 2)
+                .attr("y", height + margin.top)
+                .style("text-anchor", "middle")
+                .text("Airline");
+
+            svg.append("text")
+                .attr("transform", "rotate(-90)")
+                .attr("y", 0 - margin.left)
+                .attr("x", 0 - (height / 2))
+                .attr("dy", "1em")
+                .style("text-anchor", "middle")
+                .text("Expected Delay");
+
+
+        }).catch(function(error) {
+            console.log(error);
+        });
+    }
+    document.addEventListener("mousemove", function(event) {
+    const tooltip = document.getElementById("tooltip");
+    const isOverCity = event.target.classList.contains("city");
+    if (!isOverCity) {
+        tooltip.classList.add("hidden");
+        tooltip.innerHTML = ""; // Clear the content of the tooltip
+    }
+});
+
+    </script>
+
+</body>
+</html>
+
